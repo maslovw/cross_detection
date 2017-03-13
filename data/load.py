@@ -49,7 +49,10 @@ def normalize_picture(image):
     #image[:,:,0] = gray(image)
     #image[:,:,1] = gray_norm(image)
     #image[:,:,2] = hsv(image)[:,:,0] # h channel
+    hsvi = hsv(image)
+    hsvi[:,:,2] = cv2.equalizeHist(hsvi[:,:,2]) # h channel
     #image = hsv(image)# h channel
+    image = hsvi
     image = image.astype(np.float32) * 1.0/255.
     return image
 
